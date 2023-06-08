@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: invoice-mgr-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: invoice-mgr-virtual-service
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - invoice-mgr-gateway
+  http:
+      route:
+        - destination:
+            host: http-invoice-mgr-app
+            port:
+              number: 3000
