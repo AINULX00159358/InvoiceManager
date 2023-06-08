@@ -45,5 +45,6 @@ spec:
   selector:
     app: invoice-mgr-app
   ports:
-    - port: 3000
+    - name: http-invoice-mgr-app
+      port: 3000
       targetPort: 3000

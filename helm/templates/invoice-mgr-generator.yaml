@@ -45,5 +45,6 @@ spec:
   selector:
     app: invoice-mgr-gen
   ports:
-    - port: 3100
+    - name: http-invoice-mgr-gen
+      port: 3100
       targetPort: 3000
