@@ -11,14 +11,13 @@ server.app.post('/payment', (req, res) => {
    });
 
    function doPayment(payment) {
-      let port = config.DATA_PORT;
        request.post({
          headers: {'content-type' : 'application/json'},
-         url:     'http://localhost:'+port+'/updatePayment',
+         url:     config.DATA_URL+'/updatePayment',
          body:    JSON.stringify(payment)
        }, function(error, response, body){
          //console.log(response.statusCode);
        });
    }
    
-server.listen(config.PAYMENT_PORT);
+server.listen(config.PORT);

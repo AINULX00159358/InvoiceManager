@@ -11,14 +11,13 @@ server.app.post('/generate', (req, res) => {
 });
 
 function addInvoice(invoice) {
-    let port = config.DATA_PORT;
     request.post({
       headers: {'content-type' : 'application/json'},
-      url:     'http://localhost:'+port+'/saveInvoice',
+      url:     config.DATA_URL+'/saveInvoice',
       body:    JSON.stringify(invoice)
     }, function(error, response, body){
       console.log(response.statusCode);
     });
 }
 
-server.listen(config.GENERATOR_PORT);
+server.listen(config.PORT);

@@ -1,6 +1,7 @@
-const APP_PORT = process.env.APP_PORT || 3000
-const GENERATOR_PORT = process.env.GENERATOR_PORT || 3100
-const PAYMENT_PORT = process.env.PAYMENT_PORT || 3200
-const DATA_PORT = process.env.DATA_PORT || 3300
+cont PORT = 3000
 
-module.exports = { APP_PORT, GENERATOR_PORT,PAYMENT_PORT, DATA_PORT};
+const GENERATOR_URL = process.env.GENERATOR_URL || 'http://localhost:3100'
+const PAYMENT_URL = process.env.PAYMENT_URL || 'http://localhost:3200'
+const DATA_URL = process.env.DATA_URL || 'http://localhost:3300'
+
+module.exports = {PORT, GENERATOR_URL, PAYMENT_URL, DATA_URL};

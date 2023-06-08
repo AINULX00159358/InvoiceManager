@@ -10,10 +10,9 @@ server.app.get('/', (req, res) => {
 });
 
 server.app.post('/new', (req, res) => {
-    let port = config.GENERATOR_PORT;
     request.post({
              headers: {'content-type' : 'application/json'},
-             url:     'http://localhost:'+port+'/generate',
+             url:     config.GENERATOR_URL+'/generate',
              body:    JSON.stringify(req.body)
            }, function(error, response, body){
              res.send(JSON.parse(body));
@@ -21,10 +20,9 @@ server.app.post('/new', (req, res) => {
 });
 
 server.app.post('/payment', (req, res) => {
-       let port = config.PAYMENT_PORT;
        request.post({
              headers: {'content-type' : 'application/json'},
-             url:     'http://localhost:'+port+'/payment',
+             url:     config.PAYMENT_URL+'/payment',
              body:    JSON.stringify(req.body)
            }, function(error, response, body){
               res.send(JSON.parse(body));
@@ -33,14 +31,13 @@ server.app.post('/payment', (req, res) => {
 
 
 server.app.get('/showAll', (req, res) => {
-    let port = config.DATA_PORT;
      request.get({
                  headers: {'content-type' : 'application/json'},
-                 url:     'http://localhost:'+port+'/getInvoices'
+                 url:     config.DATA_URL+'/getInvoices'
                }, function(error, response, body){
                  res.send(JSON.parse(body));
                });
 });
 
 
-server.listen(config.APP_PORT);
+server.listen(config.PORT);

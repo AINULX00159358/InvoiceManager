@@ -38,5 +38,5 @@ spec:
   selector:
     app: invoice-mgr-data
   ports:
-    - port: 3100
-      targetPort: 3100
+    - port: 3300
+      targetPort: 3000

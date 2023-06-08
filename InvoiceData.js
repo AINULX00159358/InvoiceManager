@@ -46,4 +46,4 @@ server.app.post('/updatePayment', (req, res) => {
      res.sendStatus(200);
 });
 
-server.listen(config.DATA_PORT);
+server.listen(config.PORT);
