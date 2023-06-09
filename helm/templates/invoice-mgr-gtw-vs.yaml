@@ -25,6 +25,6 @@ spec:
   http:
   - route:
     - destination:
-        host: http-invoice-mgr-app
+        host: invoice-mgr-app-svc
         port:
           number: 3000
