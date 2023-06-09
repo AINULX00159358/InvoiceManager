@@ -20,6 +20,7 @@ spec:
     metadata:
       labels:
         app: invoice-mgr-gen
+        version: 1.0.0
     spec:
       serviceAccountName: invoice-mgr-gen-sa
       containers:
