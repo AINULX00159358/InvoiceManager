@@ -10,6 +10,10 @@ server.app.post('/generate', (req, res) => {
     res.send(invoice);
 });
 
+server.app.get('/health', (req, res) => {
+    res.send('Healthy');
+});
+
 function addInvoice(invoice) {
     request.post({
       headers: {'content-type' : 'application/json'},

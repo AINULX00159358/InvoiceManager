@@ -9,6 +9,10 @@ server.app.get('/', (req, res) => {
     res.send('Invoice app version 1.00');
 });
 
+server.app.get('/health', (req, res) => {
+    res.send('Healthy');
+});
+
 server.app.post('/new', (req, res) => {
     request.post({
              headers: {'content-type' : 'application/json'},

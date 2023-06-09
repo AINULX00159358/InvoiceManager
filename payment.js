@@ -10,8 +10,12 @@ server.app.post('/payment', (req, res) => {
        res.send(payment);
    });
 
-   function doPayment(payment) {
-       request.post({
+server.app.get('/health', (req, res) => {
+    res.send('Healthy');
+});
+
+function doPayment(payment) {
+    request.post({
          headers: {'content-type' : 'application/json'},
          url:     config.DATA_URL+'/updatePayment',
          body:    JSON.stringify(payment)

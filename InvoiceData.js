@@ -7,6 +7,10 @@ server.app.get('/', (req, res) => {
     res.send('No Used');
 });
 
+server.app.get('/health', (req, res) => {
+    res.send('Healthy');
+});
+
 server.app.post('/saveInvoice', (req, res) => {
  console.log('receiving data ...');
     console.log('body is ',req.body.invoiceId);
