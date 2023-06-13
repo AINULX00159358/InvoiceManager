@@ -3,14 +3,19 @@ const model = require("./model");
 const uuid = require('uuid');
 const server = require("./server");
 const config = require('./config');
+const server = require("./server");
+
+const version = server.version;
 
 server.app.post('/generate', (req, res) => {
+    res.set("version", version);
     const invoice = model.generateInvoice(req.body.clientId, req.body.amount)
     addInvoice(invoice);
     res.send(invoice);
 });
 
 server.app.get('/health', (req, res) => {
+    res.set("version", version);
     res.send('Healthy');
 });
 

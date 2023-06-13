@@ -1,0 +1,50 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    version = 1.0.0
+</header>
+<body>
+<p>
+<div id="invoice">
+<form id="invoiceForm">
+    <label for="clientId">ClientID:</label>
+    <input type="text" id="clientID" name="clientId"><br><br>
+
+
+    <label for="amount">Amount:</label>
+    <input type="number" name="amount" id="amount" step="any">
+    <br><br>
+    <button type="submit">Submit</button>
+</form>
+</div>
+
+
+<script>
+      function convertFormToJSON(form) {
+        const array = $(form).serializeArray(); // Encodes the set of form elements as an array of names and values.
+        const json = {};
+        $.each(array, function () {
+          json[this.name] = this.value || "";
+        });
+        return json;
+      }
+
+      $("#invoiceForm").on("submit", function (e) {
+        e.preventDefault();
+        const form = $(e.target);
+        const json = convertFormToJSON(form);
+        console.log(json);
+        $.post( "/new", json ).done(function( data ) {
+          console.log(data);
+          $( "#invoice" ).empty();
+          const jsonRes =  JSON.parse(data);
+          $.each(jsonRes, function(propName, propVal){
+          $( "#invoice" ).append("<br><br>" + propName + "=" + propVal);
+          });
+
+        });
+      });
+</script>
+</body>
+</html>

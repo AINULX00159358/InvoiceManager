@@ -1,13 +1,16 @@
 const server = require("./server");
 const model = require("./model");
 const config = require('./config');
+
 const map = new Map();
 
 server.app.get('/', (req, res) => {
+   res.set("version", version);
     res.send('No Used');
 });
 
 server.app.get('/health', (req, res) => {
+   res.set("version", version);
     res.send('Healthy');
 });
 
@@ -19,6 +22,7 @@ server.app.post('/saveInvoice', (req, res) => {
        console.log( map.delete(invoiceId) );
     }
     map.set(req.body.invoiceId, req.body);
+   res.set("version", version);
    res.sendStatus(200);
 });
 
@@ -28,6 +32,7 @@ server.app.get('/getInvoices', (req, res) => {
         res.send(arr);
         return;
     }
+    res.set("version", version);
     res.send(map.get(req.query.id))
 });
 
@@ -47,6 +52,7 @@ server.app.post('/updatePayment', (req, res) => {
      invoice.paidOn = req.body.paidOn;
      invoice.remittanceId = req.body.remittanceId;
      map.set(req.body.invoiceId, invoice);
+     res.set("version", version);
      res.sendStatus(200);
 });
 

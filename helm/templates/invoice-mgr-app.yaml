@@ -36,6 +36,19 @@ spec:
               value: "http://invoice-mgr-data-svc:3300"
             - name: PAYMENT_URL
               value: "http://invoice-mgr-payment-svc:3200"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            successThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            successThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
 ---
 
 apiVersion: v1
