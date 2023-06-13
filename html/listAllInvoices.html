@@ -1,0 +1,32 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    version = 1.0.0
+</header>
+<body>
+<p>
+<div id="target_table_id">
+</div>
+
+
+<script>
+
+      $.getJSON("/getAllInvoices" , function(data) {
+    var tbl_body = document.createElement("tbody");
+    var odd_even = false;
+    $.each(data, function() {
+        var tbl_row = tbl_body.insertRow();
+        tbl_row.className = odd_even ? "odd" : "even";
+        $.each(this, function(k , v) {
+            var cell = tbl_row.insertCell();
+            cell.appendChild(document.createTextNode(v.toString()));
+        });
+        odd_even = !odd_even;
+    });
+    $("#target_table_id").append(tbl_body);   //DOM table doesn't have .appendChild
+});
+
+</script>
+</body>
+</html>

@@ -55,8 +55,13 @@ server.app.post('/payment', (req, res) => {
 
 
 server.app.get('/showAll', (req, res) => {
+   res.set('version', version);
+    res.sendFile(__dirname + '/html/listAllInvoice.html');
+});
+
+server.app.get('/getAllInvoices', (req, res) => {
      request.get({
-                 headers: {'content-type' : 'application/json'},
+                 headers: {'content-type' : 'application/json', 'version': version},
                  url:     config.DATA_URL+'/getInvoices'
                }, function(error, response, body){
                  res.set('version', version);
