@@ -38,9 +38,8 @@
         $.post( "/new", json ).done(function( data ) {
           console.log(data);
           $( "#invoice" ).empty();
-          const jsonRes =  JSON.stringify(JSON.parse(data));
-          $.each(jsonRes, function(propName, propVal){
-          $( "#invoice" ).append("<br><br>" + propName + "=" + propVal);
+          $.each(data, function(propName, propVal){
+          $( "#invoice" ).append("<br><br>"+ propName +" = " + propVal);
           });
 
         });
