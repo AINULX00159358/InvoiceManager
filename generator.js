@@ -1,7 +1,6 @@
 const request = require('request');
 const model = require("./model");
 const uuid = require('uuid');
-const server = require("./server");
 const config = require('./config');
 const server = require("./server");
 
