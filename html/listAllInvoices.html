@@ -1,6 +1,30 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    #target_table_id  {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    #target_table_id td, #target_table_id th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    }
+
+    #target_table_id tr:nth-child(even){background-color: #f2f2f2;}
+
+    #target_table_id tr:hover {background-color: #ddd;}
+
+    #target_table_id th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+    }
+</head>
 <header>
     version = 1.0.0
 </header>
@@ -12,7 +36,7 @@
 
 <script>
 
-      $.getJSON("/getAllInvoices" , function(data) {
+      $.getJSON("http://localhost:3000/getAllInvoices" , function(data) {
     var tbl_body = document.createElement("tbody");
     var odd_even = false;
     $.each(data, function() {
