@@ -2,7 +2,7 @@ const server = require("./server");
 const model = require("./model");
 const config = require('./config');
 
-const map = Object.create(null)
+const map = new Object();
 
 server.app.get('/', (req, res) => {
    res.set("version", version);
