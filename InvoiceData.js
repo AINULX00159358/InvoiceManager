@@ -29,7 +29,7 @@ server.app.post('/saveInvoice', (req, res) => {
 server.app.get('/getInvoices', (req, res) => {
     if (req.query.id == null){
         //const arr = Array.from(map)
-        res.send(Object.values(arr));
+        res.send(Object.values(map));
         return;
     }
     res.set("version", version);
