@@ -2,7 +2,7 @@ const server = require("./server");
 const model = require("./model");
 const config = require('./config');
 
-const map = new Map();
+const map = Object.create(null)
 
 server.app.get('/', (req, res) => {
    res.set("version", version);
@@ -28,8 +28,8 @@ server.app.post('/saveInvoice', (req, res) => {
 
 server.app.get('/getInvoices', (req, res) => {
     if (req.query.id == null){
-        const arr = Array.from(map)
-        res.send(arr);
+        //const arr = Array.from(map)
+        res.send(Object.values(arr));
         return;
     }
     res.set("version", version);
