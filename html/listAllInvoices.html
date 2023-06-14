@@ -20,7 +20,7 @@
         tbl_row.className = odd_even ? "odd" : "even";
         $.each(this, function(k , v) {
             var cell = tbl_row.insertCell();
-            cell.appendChild(document.createTextNode(v.toString()));
+            cell.appendChild(document.createTextNode(JSON.stringify(v));
         });
         odd_even = !odd_even;
     });
