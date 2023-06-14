@@ -56,7 +56,7 @@ server.app.post('/payment', (req, res) => {
 
 server.app.get('/showAll', (req, res) => {
    res.set('version', version);
-    res.sendFile(__dirname + '/html/listAllInvoice.html');
+    res.sendFile(__dirname + '/html/listAllInvoices.html');
 });
 
 server.app.get('/getAllInvoices', (req, res) => {
