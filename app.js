@@ -22,14 +22,6 @@ server.app.get('/create', (req, res) => {
     res.sendFile(__dirname + '/html/invoice.html');
 });
 
-//server.app.post('/newTest', (req, res) => {
-//    console.log(JSON.stringify(req.body))
-//    res.set('version', version);
-//    const invoice = model.generateInvoice(req.body.clientId, req.body.amount)
-//    console.log(invoice);
-//    res.send(JSON.stringify(invoice));
-//});
-
 
 server.app.post('/new', (req, res) => {
     request.post({

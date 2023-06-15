@@ -1,30 +1,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    #target_table_id  {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    }
-
-    #target_table_id td, #target_table_id th {
-    border: 1px solid #ddd;
-    padding: 8px;
-    }
-
-    #target_table_id tr:nth-child(even){background-color: #f2f2f2;}
-
-    #target_table_id tr:hover {background-color: #ddd;}
-
-    #target_table_id th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #04AA6D;
-    color: white;
-    }
-</head>
 <header>
     version = 1.0.0
 </header>
@@ -36,20 +12,28 @@
 
 <script>
 
-      $.getJSON("http://localhost:3000/getAllInvoices" , function(data) {
-    var tbl_body = document.createElement("tbody");
-    var odd_even = false;
+   $.getJSON("http://localhost:3000/getAllInvoices" , function(data) {
+   //const data = {"e232323fefdfs232sccse22":{"invoiceId":"e232323fefdfs232sccse22","clintId":"44444323233232","amount":32340,"date":"2011-10-05T14:48:00.000Z","paid":"y","remittanceId":"231212112121","paidOn":"2023-06-15T21:08:42.773Z"},"2221hjssjksnq2111122222":{"invoiceId":"2221hjssjksnq2111122222","clintId":"778888666","amount":9340,"date":"2011-10-05T14:48:00.000Z","paid":"y","remittanceId":"231212112121","paidOn":"2023-06-15T21:08:42.773Z"}};
+   var tbl_body = document.createElement("table");
+   var tbl_header = tbl_body.insertRow();
+   tbl_header.insertCell().appendChild(document.createTextNode("invoiceID"));
+   tbl_header.insertCell().appendChild(document.createTextNode("clientID"));
+   tbl_header.insertCell().appendChild(document.createTextNode("amount"));
+   tbl_header.insertCell().appendChild(document.createTextNode("dated"));
+   tbl_header.insertCell().appendChild(document.createTextNode("paid"));
+   tbl_header.insertCell().appendChild(document.createTextNode("remittenceID"));
+   tbl_header.insertCell().appendChild(document.createTextNode("paidOn"));
+
     $.each(data, function() {
         var tbl_row = tbl_body.insertRow();
-        tbl_row.className = odd_even ? "odd" : "even";
         $.each(this, function(k , v) {
-            var cell = tbl_row.insertCell();
-            cell.appendChild(document.createTextNode(JSON.stringify(v)));
+            tbl_row.insertCell().appendChild(document.createTextNode(JSON.stringify(v, null, 2)));
         });
-        odd_even = !odd_even;
     });
+   tbl_body.setAttribute('border', '1')
+   tbl_body.setAttribute('rules', 'all')
     $("#target_table_id").append(tbl_body);   //DOM table doesn't have .appendChild
-});
+ });
 
 </script>
 </body>
