@@ -5,6 +5,10 @@
     version = 1.0.0
 </header>
 <body>
+<div id="space"></div>
+<p></p>
+<p></p>
+<p>
 <p>
 <button id="refresh">Refresh</button>
 <p></p>
@@ -29,6 +33,10 @@
 
 
 <script>
+  $(document).ready(function(){
+          $("#space").empty().append("LIVE");
+           $("#space").css('color', 'blue');
+        });
     function convertFormToJSON(form) {
         const array = $(form).serializeArray(); // Encodes the set of form elements as an array of names and values.
         const json = {};
