@@ -1,4 +1,4 @@
-const PORT = 3000
+const PORT = process.env.PORT  || 3000
 
 const GENERATOR_URL = process.env.GENERATOR_URL || 'http://localhost:3100'
 const PAYMENT_URL = process.env.PAYMENT_URL || 'http://localhost:3200'

@@ -18,7 +18,7 @@ function generateInvoice(clientId, amount) {
 function generatePayment(invoiceId, amount) {
     return {
         invoiceId: invoiceId,
-        amount: formatter.format(amount),
+        amount: parseInt(amount.toString()),
         paidOn: new Date().toISOString(),
         remittanceId: String(Date.now())
         };

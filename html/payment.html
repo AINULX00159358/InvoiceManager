@@ -1,0 +1,82 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    version = 1.0.0
+</header>
+<body>
+<p>
+<button id="refresh">Refresh</button>
+<p></p>
+<div id="target_table_id">
+</div>
+
+<p></p>
+<p></p>
+<hr>
+<div id="payment">
+    <form id="paymentForm">
+        <label for="invoiceId">InvoiceID:</label>
+        <input type="text" id="invoiceId" name="invoiceId"><br><br>
+
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" id="amount" step="any">
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="paymentStatus"></div>
+</div>
+
+
+<script>
+    function convertFormToJSON(form) {
+        const array = $(form).serializeArray(); // Encodes the set of form elements as an array of names and values.
+        const json = {};
+        $.each(array, function () {
+            json[this.name] = this.value || "";
+        });
+        return json;
+    }
+    $("#refresh").click(function(){
+        doRefresh();
+    });
+
+    $("#paymentForm").on("submit", function (e) {
+        e.preventDefault();
+        const form = $(e.target);
+        const json = convertFormToJSON(form);
+        $.post( "/doPayment", json ).done(function (result, status, xhr) {
+            console.log("status "+ status);
+            $("#paymentStatus").empty().append("<p><b>"+status.toString()+"</b>")
+            $("#paymentForm").trigger("reset");
+        }).fail(function (xhr, status, error) {
+            console.log("status "+ status+ "  error "+ error);
+            $("#paymentForm").trigger("reset");
+            $("#paymentStatus").empty().append("<p><b>"+status.toString()+"</p></b><p>"+error.toString()+"</p>")
+        });
+    });
+   function doRefresh() {
+       $.getJSON("http://localhost:3000/getUnPaid", function (data) {
+
+           var tbl_body = document.createElement("table");
+           var tbl_header = tbl_body.insertRow();
+           tbl_header.insertCell().appendChild(document.createTextNode("invoiceID"));
+           tbl_header.insertCell().appendChild(document.createTextNode("amount"));
+           $.each(data, function () {
+               var tbl_row = tbl_body.insertRow();
+               $.each(this, function (k, v) {
+                   tbl_row.insertCell().appendChild(document.createTextNode(JSON.stringify(v, null, 2)));
+               });
+           });
+           tbl_body.setAttribute('border', '1')
+           tbl_body.setAttribute('rules', 'all')
+           $("#target_table_id").empty().append(tbl_body);   //DOM table doesn't have .appendChild
+       });
+   }
+    $(document).ready(function(){
+
+      doRefresh();
+    });
+</script>
+</body>
+</html>

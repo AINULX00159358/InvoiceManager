@@ -34,15 +34,35 @@ server.app.post('/new', (req, res) => {
            });
 });
 
-server.app.post('/payment', (req, res) => {
-       request.post({
-             headers: {'content-type' : 'application/json'},
-             url:     config.PAYMENT_URL+'/payment',
-             body:    JSON.stringify(req.body)
-           }, function(error, response, body){
-              res.set('version', version);
-              res.send(JSON.parse(body));
-           });
+server.app.get('/payment', (req, res) => {
+    res.set('version', version);
+    res.sendFile(__dirname + '/html/payment.html');
+});
+
+server.app.post('/doPayment', (req, res) => {
+    console.log("in /doPayment , body is ", req.body)
+    const paymentJson = {
+        invoiceId: req.body.invoiceId, amount: req.body.amount
+    }
+    console.log("in json", JSON.stringify(paymentJson));
+    var options = {
+        headers: {'content-type' : 'application/json'},
+        method: 'POST',
+        url:     config.PAYMENT_URL+'/payment',
+        json: {
+            invoiceId: req.body.invoiceId, amount: req.body.amount
+        }
+    };
+
+    request(options, function (error, response, body) {
+
+        if (error) {
+            return res.sendStatus(401);
+        } else {
+            return res.sendStatus(200);
+        }
+    });
+
 });
 
 
@@ -60,6 +80,18 @@ server.app.get('/getAllInvoices', (req, res) => {
                  res.send(JSON.parse(body));
                });
 });
+
+server.app.get('/getUnPaid', (req, res) => {
+    request.get({
+        headers: {'content-type' : 'application/json', 'version': version},
+        url:     config.DATA_URL+'/getUnPaid'
+    }, function(error, response, body){
+        res.set('version', version);
+        res.send(JSON.parse(body));
+    });
+});
+
+
 
 function collectFormData(req, callback) {
     const FORM_URLENCODED = 'application/x-www-form-urlencoded';

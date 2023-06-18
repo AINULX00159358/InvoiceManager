@@ -34,6 +34,19 @@ const getInvoices = (key) => {
    return cache.mget([key]);
 }
 
+const getUnpaidInvoices = () => {
+    const list = []
+    cache.keys().map(k => cache.get(k)).filter(i => i.paid === 'n').forEach(x => list.push({
+        "invoiceId": x.invoiceId,
+        "amount": x.amount}
+    ));
+    return list;
+
+    // for (key in cache.keys()){
+    //     if (cache.get(key).paid)
+    // }
+}
+
 server.app.get('/', (req, res) => {
    res.set("version", version);
     res.send('No Used');
@@ -60,9 +73,14 @@ server.app.get('/getInvoices', (req, res) => {
     res.status(200).json(getInvoices(req.query.id));
 });
 
+server.app.get('/getUnPaid', (req, res) => {
+    res.set("version", version);
+    res.status(200).json(getUnpaidInvoices());
+});
+
 
 server.app.post('/updatePayment', (req, res) => {
-     console.log('received payment for ',req.body.invoiceId);
+     console.log('received payment for ',req.body);
     res.set("version", version);
      if (updatePayment(req.body, req.body.invoiceId)) {
          res.sendStatus(200);
