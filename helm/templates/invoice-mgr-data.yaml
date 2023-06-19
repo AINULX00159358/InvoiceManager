@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: invoice-mgr-data-sa
+  namespace: {{.Release.Namespace}}
   labels:
     account: invoice-mgr-data
     app: invoice-mgr-data
@@ -11,6 +12,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: invoice-data
+  namespace: {{.Release.Namespace}}
 spec:
   replicas: 1
   selector:
@@ -29,11 +31,15 @@ spec:
           ports:
             - containerPort: 3000
           imagePullPolicy: Never
+          env:
+            - name: SPACE
+              value: {{ .Release.Namespace }}
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: invoice-mgr-data-svc
+  namespace: {{.Release.Namespace}}
 spec:
   selector:
     app: invoice-mgr-data
