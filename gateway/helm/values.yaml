@@ -1,5 +1,5 @@
 #containerRegistry: "ainhabacr.azurecr.io"
 destination:
   host:
-    live: http-invoice-mgr-ext-live
-    canary: http-invoice-mgr-ext-canary
+    live: invoice-mgr-app-svc.live.svc.cluster.local
+    canary: invoice-mgr-app-svc.canary.svc.cluster.local

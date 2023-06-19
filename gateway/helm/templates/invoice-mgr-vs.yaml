@@ -11,6 +11,6 @@ spec:
   http:
   - route:
     - destination:
-        host: invoice-mgr-app-svc.v100.svc.cluster.local
+        host: {{ Values.destination.host.live}}
         port:
           number: 3000
