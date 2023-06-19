@@ -16,7 +16,7 @@ deployapp() {
 
 deployvs() {
   echo "create deploy gateway $1"
-  helm upgrade -n $1 --install invoice-mgr ./gateway/helm
+  helm upgrade -n $1 --install invoice-manager-gateway ./gateway/helm
 }
 
 
