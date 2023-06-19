@@ -58,13 +58,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: invoice-mgr-app-svc
+  name: invoiceMgrAppSvc
   namespace: {{.Release.Namespace}}
 spec:
   selector:
     app: invoice-mgr-app
   ports:
-    - name: http-invoice-mgr-app
+    - name: invoiceMgrApp
       port: 3000
       targetPort: 3000
 #---
