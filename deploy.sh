@@ -14,7 +14,7 @@ deployapp() {
   helm upgrade -n $1 --install invoice-manager-app ./helm
 }
 
-deployvs() {
+deploygateway() {
   echo "create deploy gateway $1 $2"
   helm upgrade --install invoice-manager-gateway ./gateway/helm --set destination.host.live="http-invoice-mgr-ext-$1" --set destination.host.canary="http-invoice-mgr-ext-$2"
 }
@@ -27,8 +27,8 @@ case "$1" in
   "application")
     deployapp $2
     ;;
-  "virtualservice")
-     deployvs $2
+  "gateway")
+     deploygateway $2 $3
     ;;
   *)
     echo "You have failed to specify what to do correctly."
