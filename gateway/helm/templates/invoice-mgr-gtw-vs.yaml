@@ -27,6 +27,6 @@ spec:
   http:
   - route:
     - destination:
-        host: http-invoice-mgr-ext-app
+        host: {{ .Values.destination.host.live }}
         port:
           number: 3000

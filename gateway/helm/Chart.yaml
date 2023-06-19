@@ -1,5 +1,5 @@
 apiVersion: v2
-name: invoice-manager-app
+name: invoice-manager-gateway
 description: A Helm chart for Kubernetes, part of EADesign CA1 2023
 
 # A chart can be either an 'application' or a 'library' chart.

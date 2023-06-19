@@ -71,7 +71,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: http-invoice-mgr-ext-app
+  name: http-invoice-mgr-ext-{{.Release.Namespace}}
   namespace: default
 spec:
   type: ExternalName
