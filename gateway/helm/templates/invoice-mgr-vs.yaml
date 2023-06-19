@@ -11,6 +11,6 @@ spec:
   http:
   - route:
     - destination:
-        host: {{ Values.destination.host.live}}
+        host: {{ .Values.destination.host.live }}
         port:
           number: 3000
