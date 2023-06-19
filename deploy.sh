@@ -16,7 +16,7 @@ deployapp() {
 
 deployvs() {
   echo "create deploy gateway $1"
-  helm upgrade -n $1 --install invoice-manager-gateway ./gateway/helm
+  helm upgrade --install invoice-manager-gateway ./gateway/helm --set destination.host.live="http-invoice-mgr-ext-v100" --set destination.host.canary="http-invoice-mgr-ext-v100"
 }
 
 
