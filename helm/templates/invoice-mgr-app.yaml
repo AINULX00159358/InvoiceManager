@@ -67,14 +67,14 @@ spec:
     - name: http-invoice-mgr-app
       port: 3000
       targetPort: 3000
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: http-invoice-mgr-ext-{{.Release.Namespace}}
-  namespace: default
-spec:
-  type: ExternalName
-  externalName: http-invoice-mgr-app.{{.Release.Namespace}}.svc.cluster.local
-  ports:
-    - port: 3000
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: http-invoice-mgr-ext-{{.Release.Namespace}}
+#  namespace: default
+#spec:
+#  type: ExternalName
+#  externalName: http-invoice-mgr-app.{{.Release.Namespace}}.svc.cluster.local
+#  ports:
+#    - port: 3000
