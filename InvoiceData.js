@@ -4,7 +4,7 @@ const NodeCache = require("node-cache");
 const version = server.version;
 
 
-const cache = new NodeCache({ stdTTL: 900 });
+const cache = new NodeCache({ stdTTL: 60 });
 
 cache.on( "set", function( key, value ){
     console.log("added invoice ", "key=", key, " value=", value);

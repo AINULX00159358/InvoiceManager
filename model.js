@@ -1,14 +1,11 @@
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-});
+
 const uuid = require('uuid');
 
 function generateInvoice(clientId, amount) {
     return {
          invoiceId: uuid.v4(),
          clientId: clientId,
-         amount: formatter.format(amount),
+         amount: Number(amount),
          date: new Date().toISOString(),
          paid: "n",
          remittanceId:"",
