@@ -1,13 +1,18 @@
+let URL = Cypress.env('APPURL');
+if (URL == null) {
+    URL = "localhost:3000";
+}
+
 Cypress._.times(5, () => {
   describe('E2E UI Test HEALTH', () => {
 
-    // before(() => {
-    //
-    //   cy.visit("http://localhost:3000", {timeout: 30000});
-    // });
+    //before(() => {
+
+       //cy.visit("http://localhost:3000", {timeout: 30000});
+     //});
 
     it('get health', () => {
-      cy.request("GET", "http://localhost:3000/health").then((response) => {
+      cy.request("GET", "http://" + URL + "/health").then((response) => {
         expect(response.status).to.eq(200)
         expect(response.body).to.contain('Healthy')
       })
@@ -57,7 +62,7 @@ Cypress._.times(1000, () => {
       cy.request({
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        url: 'http://localhost:3000/new',
+        url: "http://"+ URL + "/new",
         body: data
       }).then((response) => {
         expect(response.status).to.eq(200)
@@ -72,7 +77,7 @@ describe('E2E UI Test INVOICE CREATE', () => {
     cy.request({
       method: "GET",
       headers: {'Content-Type': 'application/json'},
-      url: "http://localhost:3000/getAllInvoices"
+      url: "http://" + URL +"/getAllInvoices"
     }).then((response) => {
       const obj = response.body
       const result = Object.entries(obj).entries()
@@ -89,11 +94,10 @@ describe('E2E UI Test INVOICE CREATE', () => {
         cy.request({
           method: "POST",
           headers: {'Content-Type': 'application/json'},
-          url: "http://localhost:3000/doPayment",
+          url: "http://"+ URL +"/doPayment",
           body: invoice
         }).then((payresponse) => expect(payresponse.status).to.eq(200))
       })
     })
   });
-
 })
