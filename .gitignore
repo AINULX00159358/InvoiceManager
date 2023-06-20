@@ -1,2 +1,5 @@
 /node_modules/
 /.idea/
+/cypress/videos/
+/cypress/screenshots/
+/cypress/support/
