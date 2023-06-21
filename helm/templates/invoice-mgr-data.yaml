@@ -1,13 +1,3 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: invoice-mgr-data-sa
-  namespace: {{.Release.Namespace}}
-  labels:
-    account: invoice-mgr-data
-    app: invoice-mgr-data
----
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -24,16 +14,22 @@ spec:
         app: invoice-mgr-data
         version: 1.0.0
     spec:
-      serviceAccountName: invoice-mgr-data-sa
+      serviceAccountName: invoice-mgr-sa
       containers:
         - name: invoice-mgr-data
-          image: invoice-mgr-data:v1.0.0
+          image: invoice-mgr:v1.0.0
+          command: [ "npm" ]
+          args: [ "run", "data" ]
           ports:
             - containerPort: 3000
           imagePullPolicy: Never
           env:
-            - name: SPACE
-              value: {{ .Release.Namespace }}
+            - name: INVOICE_URL
+              value: "http://invoice-mgr-gen-svc:3100"
+            - name: DATA_URL
+              value: "http://invoice-mgr-data-svc:3300"
+            - name: PAYMENT_URL
+              value: "http://invoice-mgr-payment-svc:3200"
 ---
 apiVersion: v1
 kind: Service

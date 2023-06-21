@@ -14,6 +14,16 @@ server.app.post('/generate', (req, res) => {
     res.send(invoice);
 });
 
+server.app.get('/getAll', (req, res) => {
+    request.get({
+        headers: {'content-type' : 'application/json', 'version': version},
+        url:     config.DATA_URL+'/getInvoices'
+    }, function(error, response, body){
+        res.set('version', version);
+        res.send(JSON.parse(body));
+    });
+});
+
 server.app.get('/health', (req, res) => {
     res.set("version", version);
     res.send('Healthy');

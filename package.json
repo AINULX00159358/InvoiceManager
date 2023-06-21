@@ -4,18 +4,20 @@
   "description": "",
   "scripts": {
     "app": "node app.js",
-    "generator": "node generator.js",
-    "data": "node InvoiceData.js",
+    "invoice": "node invoice.js",
+    "data": "node data.js",
     "payment": "node payment.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.14.0"
+  },
   "dependencies": {
-    "axios": "^1.4.0",
-    "cypress": "^12.14.0",
     "express": "^4.18.2",
+    "axios": "^1.4.0",
     "node-cache": "^5.1.2",
     "request": "^2.88.2",
     "short-uuid": "^4.2.2",

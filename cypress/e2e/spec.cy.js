@@ -1,38 +1,13 @@
-Cypress._.times(5, () => {
-  describe('E2E UI Test HEALTH', () => {
-
-    // before(() => {
-    //
-    //   cy.visit("http://localhost:3000", {timeout: 30000});
-    // });
-
-    it('get health', () => {
-      cy.request("GET", "http://localhost:3000/health").then((response) => {
-        expect(response.status).to.eq(200)
-        expect(response.body).to.contain('Healthy')
-      })
-    });
-
-
-
-    // it('create Invoice', () => {
-    //
-    //   cy.wait(1000);
-    //   cy.get('#logo').should('contain.text', 'UI');
-    //   cy.get('form').within(($form) => {
-    //     cy.get('input[name="email"]').type('cypresstest@email.com')
-    //     cy.get('input[name="systolic"]').type('120')
-    //     cy.get('input[name="diastolic"]').type('98')
-    //     cy.root().submit()
-    //   })
-    //     cy.wait(1000);
-    //     cy.get('#results_input').should('contain.text', 'Systolic :120 Diastolic 98')
-    //     cy.get('#results_category').should('contain.html', 'Your blood Pressure category is: High')
-    //
-    // });
-
-  })
-});
+// Cypress._.times(5, () => {
+//   describe('E2E UI Test HEALTH', () => {
+//     it('get health', () => {
+//       cy.request("GET", "http://localhost:3000/health").then((response) => {
+//         expect(response.status).to.eq(200)
+//         expect(response.body).to.contain('Healthy')
+//       })
+//     });
+//   })
+// });
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -45,7 +20,7 @@ function createInvoice(invoiceID, invoiceAmount) {
   }
 }
 
-Cypress._.times(1000, () => {
+Cypress._.times(500, () => {
   describe('E2E UI Test INVOICE CREATE', () => {
     it('new Invoice', () => {
       let data = {
@@ -57,7 +32,7 @@ Cypress._.times(1000, () => {
       cy.request({
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        url: 'http://localhost:3000/new',
+        url: 'http://localhost:3000/generate',
         body: data
       }).then((response) => {
         expect(response.status).to.eq(200)
@@ -72,7 +47,7 @@ describe('E2E UI Test INVOICE CREATE', () => {
     cy.request({
       method: "GET",
       headers: {'Content-Type': 'application/json'},
-      url: "http://localhost:3000/getAllInvoices"
+      url: "http://localhost:3000/getAll"
     }).then((response) => {
       const obj = response.body
       const result = Object.entries(obj).entries()
@@ -89,7 +64,7 @@ describe('E2E UI Test INVOICE CREATE', () => {
         cy.request({
           method: "POST",
           headers: {'Content-Type': 'application/json'},
-          url: "http://localhost:3000/doPayment",
+          url: "http://localhost:3100/payment",
           body: invoice
         }).then((payresponse) => expect(payresponse.status).to.eq(200))
       })

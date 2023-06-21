@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: invoice-mgr-sa
+  namespace: {{.Release.Namespace}}
+  labels:
+    account: invoice-mgr
