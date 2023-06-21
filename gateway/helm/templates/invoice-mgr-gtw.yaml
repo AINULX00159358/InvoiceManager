@@ -6,6 +6,7 @@ metadata:
 spec:
   selector:
     istio: istio-ingressgateway # use istio default controller
+    app: istio-ingressgateway
   servers:
     - port:
         number: 80
