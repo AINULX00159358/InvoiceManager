@@ -9,19 +9,8 @@ spec:
   gateways:
     - invoice-mgr-gateway
   http:
-    - match:
-        - uri:
-            prefix: /gen
-      route:
+    - route:
         - destination:
             host: invoice-mgr-gen-svc.v100.svc.cluster.local
             port:
-              number: 3000
-    - match:
-        - uri:
-            prefix: /pay
-      route:
-        - destination:
-            host: invoice-mgr-payment-svc.v100.svc.cluster.local
-            port:
-              number: 3000
+              number: 3100
