@@ -27,7 +27,9 @@ spec:
       serviceAccountName: invoice-mgr-app-sa
       containers:
         - name: invoice-mgr-app
-          image: invoice-mgr-app:v1.0.0
+          image: invoice-mgr:v1.0.0
+          command: [ "npm" ]
+          args: [ "run", "app" ]
           ports:
             - containerPort: 3000
           imagePullPolicy: Never

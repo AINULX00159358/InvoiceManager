@@ -27,7 +27,9 @@ spec:
       serviceAccountName: invoice-mgr-data-sa
       containers:
         - name: invoice-mgr-data
-          image: invoice-mgr-data:v1.0.0
+          image: invoice-mgr:v1.0.0
+          command: [ "npm" ]
+          args: [ "run", "data" ]
           ports:
             - containerPort: 3000
           imagePullPolicy: Never
