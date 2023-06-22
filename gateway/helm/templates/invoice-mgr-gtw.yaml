@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   selector:
-    istio: {  .Values.istio.selector } # use istio default controller
+    istio: aks-istio-ingressgateway-external # use istio default controller
   servers:
     - port:
         number: 80
