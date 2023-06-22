@@ -27,7 +27,7 @@ spec:
       serviceAccountName: invoice-mgr-data-sa
       containers:
         - name: invoice-mgr-data
-          image: {{ .Values.container.image }}:v{ .Values.app.version }}
+          image: {{ .Values.container.image }}
           command: [ "npm" ]
           args: [ "run", "data" ]
           ports:

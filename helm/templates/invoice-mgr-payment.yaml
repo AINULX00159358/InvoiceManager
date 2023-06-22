@@ -27,7 +27,7 @@ spec:
       serviceAccountName: invoice-mgr-payment-sa
       containers:
         - name: invoice-mgr-payment
-          image: {{ .Values.container.image }}:v{ .Values.app.version }}
+          image: {{ .Values.container.image }}
           command: [ "npm" ]
           args: [ "run", "payment" ]
           ports:

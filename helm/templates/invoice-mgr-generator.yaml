@@ -27,7 +27,7 @@ spec:
       serviceAccountName: invoice-mgr-gen-sa
       containers:
         - name: invoice-mgr-gen
-          image: {{ .Values.container.image }}:v{ .Values.app.version }}
+          image: {{ .Values.container.image }}
           command: [ "npm" ]
           args: [ "run", "generator" ]
           ports:
