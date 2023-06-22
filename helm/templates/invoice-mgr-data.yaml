@@ -22,12 +22,12 @@ spec:
     metadata:
       labels:
         app: invoice-mgr-data
-        version: 1.0.0
+        version: {{ .Values.app.version }}
     spec:
       serviceAccountName: invoice-mgr-data-sa
       containers:
         - name: invoice-mgr-data
-          image: invoice-mgr:v1.0.0
+          image: {{ .Values.container.image }}:v{ .Values.app.version }}
           command: [ "npm" ]
           args: [ "run", "data" ]
           ports:

@@ -1,1 +1,5 @@
 #containerRegistry: "ainhabacr.azurecr.io"
+app:
+  version: 1.0.0
+container:
+  image: "alixtudublincr.azurecr.io/invoice-mgr"
