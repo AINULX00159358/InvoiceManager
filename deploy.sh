@@ -20,6 +20,8 @@ deploygateway() {
   export INGRESS_HOST_EXTERNAL=$(kubectl -n aks-istio-ingress get service aks-istio-ingressgateway-external -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
   export INGRESS_PORT_EXTERNAL=$(kubectl -n aks-istio-ingress get service aks-istio-ingressgateway-external -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
   export GATEWAY_URL_EXTERNAL=$INGRESS_HOST_EXTERNAL:$INGRESS_PORT_EXTERNAL
+  echo "http://$GATEWAY_URL_EXTERNAL/health"
+  curl --header 'Content-Type: application/json' -v http://$GATEWAY_URL_EXTERNAL/health
 }
 
 
