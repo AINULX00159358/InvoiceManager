@@ -1,4 +1,5 @@
 #containerRegistry: "ainhabacr.azurecr.io"
+istioSelector: aks-istio-ingressgateway-external
 destination:
   host:
     live: invoice-mgr-app-svc.live.svc.cluster.local
