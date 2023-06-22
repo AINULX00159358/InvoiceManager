@@ -5,7 +5,7 @@ echo "starting $*"
 deployns() {
   echo "create namespace $1"
   kubectl create namespace $1
-  kubectl label namespace $1 name=$1 istio-injection=enabled
+  kubectl label namespace $1 name=$1 istio-injection=enabled istio.io/rev=asm-1-17
   kubectl get namespace $1 -o=yaml
 }
 
