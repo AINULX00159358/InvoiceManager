@@ -32,7 +32,7 @@ spec:
           args: [ "run", "data" ]
           ports:
             - containerPort: 3000
-          imagePullPolicy: Never
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
           env:
             - name: SPACE
               value: {{ .Release.Namespace }}

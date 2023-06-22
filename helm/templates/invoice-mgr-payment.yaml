@@ -32,7 +32,7 @@ spec:
           args: [ "run", "payment" ]
           ports:
             - containerPort: 3000
-          imagePullPolicy: Never
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
           env:
             - name: GENERATOR_URL
               value: "http://invoice-mgr-gen-svc:3100"
