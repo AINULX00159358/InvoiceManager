@@ -4,4 +4,4 @@ destination:
     live: invoice-mgr-app-svc.live.svc.cluster.local
     canary: invoice-mgr-app-svc.canary.svc.cluster.local
 istio:
-  selector: aks-istio-ingressgateway-external
+  selector: "aks-istio-ingressgateway-external"
