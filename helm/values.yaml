@@ -2,5 +2,5 @@
 app:
   version: 1.0.0
 container:
-  image: "alixtudublin.azurecr.io/invoice-mgr:v1.0.0"
+  image: "x00159358/image-mgr:v1.0.0"
 imagePullPolicy: Always
