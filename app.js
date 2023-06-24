@@ -9,12 +9,14 @@ const version = server.version;
 server.app.use(bodyParser.json());
 server.app.get('/', (req, res) => {
    res.set('version', version);
-    res.send('Invoice app version '+ version);
+   res.send('Invoice app version '+ version);
 });
 
 server.app.get('/health', (req, res) => {
     res.set('version', version);
-    res.send('Healthy');
+    res.setHeader("Content-Type", "application/json");
+    res.writeHead(200);
+    res.end(JSON.stringify({ 'status': 'healthy', 'version' : version}, null, 3));
 });
 
 server.app.get('/create', (req, res) => {

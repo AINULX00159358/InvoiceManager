@@ -1,9 +1,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
-<header>
-    version = 1.0.0
-</header>
 <body>
 <div id="space"></div>
 <p></p>
@@ -25,9 +22,18 @@
 
 <script>
       $(document).ready(function(){
-          $("#space").empty().append("LIVE");
+          $("#space").empty().append("Invoice Manager APP (Create), ");
            $("#space").css('color', 'blue');
+            $.getJSON("/health", function(result){
+                $.each(result, function(key, value){
+                   if (key.toString() === 'version') {
+                      $("#space").append(" "+ key + ":" + value);
+                   }
+                });
+            });
         });
+
+
 
       function convertFormToJSON(form) {
         const array = $(form).serializeArray(); // Encodes the set of form elements as an array of names and values.

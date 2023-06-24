@@ -1,9 +1,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
-<header>
-    version = 1.0.0
-</header>
 <body>
 <div id="space"></div>
 <p></p>
@@ -15,10 +12,18 @@
 
 
 <script>
-$(document).ready(function(){
-          $("#space").empty().append("LIVE");
+    $(document).ready(function(){
+          $("#space").empty().append("Invoice Manager APP (all invoices), ");
            $("#space").css('color', 'blue');
+            $.getJSON("/health", function(result){
+                $.each(result, function(key, value){
+                   if (key.toString() === 'version') {
+                      $("#space").append(" "+ key + ":" + value);
+                   }
+                });
+            });
         });
+
    $.getJSON("http://localhost:3000/getAllInvoices" , function(data) {
    //const data = {"e232323fefdfs232sccse22":{"invoiceId":"e232323fefdfs232sccse22","clintId":"44444323233232","amount":32340,"date":"2011-10-05T14:48:00.000Z","paid":"y","remittanceId":"231212112121","paidOn":"2023-06-15T21:08:42.773Z"},"2221hjssjksnq2111122222":{"invoiceId":"2221hjssjksnq2111122222","clintId":"778888666","amount":9340,"date":"2011-10-05T14:48:00.000Z","paid":"y","remittanceId":"231212112121","paidOn":"2023-06-15T21:08:42.773Z"}};
    var tbl_body = document.createElement("table");
