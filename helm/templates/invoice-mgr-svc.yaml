@@ -5,8 +5,8 @@ metadata:
   namespace: {{.Release.Namespace}}
 spec:
   selector:
-    app: {{ .Values.app.name }}
-    version: {{ .Values.app.version }}
+    app: {{ .Values.app.name }}-{{ .Values.vs.subset }}
+    version: {{ .Values.vs.subset }}
   ports:
     - name: http
       port: {{ .Values.app.service.port }}
