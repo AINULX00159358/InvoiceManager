@@ -1,5 +1,5 @@
 app:
-  name: invoice-mgr-data
+  name: data
   exec: data
   service:
     port: 3300

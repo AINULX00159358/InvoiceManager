@@ -1,5 +1,5 @@
 app:
-  name: invoice-mgr-generator
+  name: generator
   exec: generator
   service:
     port: 3100
