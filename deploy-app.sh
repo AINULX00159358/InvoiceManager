@@ -7,6 +7,8 @@ if [ $len -eq 0 ]; then
 fi
 echo "using namespace $1"
 
+helm del -n $1 $(helm ls --all -n $1 --short) --purge
+
 echo "create deploy app"
 helm upgrade -n $1 --install invoice-manager-app ./helm -f ./helm/app-values/app.yaml
 
