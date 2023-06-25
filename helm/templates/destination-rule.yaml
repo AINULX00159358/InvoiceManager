@@ -9,6 +9,7 @@ spec:
     - name: subset-v1
       labels:
         version: v1
+        service: {{ .Values.app.name }}
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
