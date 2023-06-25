@@ -1,7 +1,7 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: %%Namespace%%
+  name: {{.Release.Namespace}}
   labels:
-    name: %%Namespace%%
+    name: {{.Release.Namespace}}
     istio-injection: enabled
