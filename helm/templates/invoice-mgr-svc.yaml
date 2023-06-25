@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.app.name }}
+  name: {{ .Values.app.name }}-v1
   namespace: {{.Release.Namespace}}
   labels:
     app: {{ .Values.app.name }}
@@ -9,6 +9,7 @@ metadata:
 spec:
   selector:
     app: {{ .Values.app.name }}
+    version: v1
   ports:
     - name: http
       port: {{ .Values.app.service.port }}
