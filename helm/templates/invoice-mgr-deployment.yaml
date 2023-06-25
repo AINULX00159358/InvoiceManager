@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.app.name }}-{{ .Values.app.version }}
+  name: {{ .Values.app.name }}-v1
   namespace: {{.Release.Namespace}}
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.app.name }}
-      version: {{ .Values.app.version }}
+      version: v1
   template:
     metadata:
       labels:
         app: {{ .Values.app.name }}
-        version: {{ .Values.app.version }}
+        version: v1
     spec:
       serviceAccountName: invoice-mgr-sa
       containers:
