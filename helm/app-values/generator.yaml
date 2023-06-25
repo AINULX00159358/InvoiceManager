@@ -1,0 +1,7 @@
+app:
+  name: invoice-mgr-generator
+  version: 1.0.0
+  exec: generator
+  service:
+    name: invoice-mgr-generator-svc
+    port: 3100

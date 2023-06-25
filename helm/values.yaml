@@ -4,3 +4,6 @@ app:
 container:
   image: "x00159358/image-mgr:v1.0.0"
 imagePullPolicy: Always
+GENERATOR_URL: "http://generator:3100"
+DATA_URL: "data"
+PAYMENT_URL: "payment"

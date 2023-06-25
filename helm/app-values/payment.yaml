@@ -1,0 +1,7 @@
+app:
+  name: invoice-mgr-payment
+  version: 1.0.0
+  exec: payment
+  service:
+    name: invoice-mgr-payment-svc
+    port: 3200

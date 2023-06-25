@@ -1,45 +1,35 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: invoice-mgr-app-sa
-  namespace: {{.Release.Namespace}}
-  labels:
-    account: invoice-mgr-app
-    app: invoice-mgr-app
----
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: invoice-app
+  name: {{ .Values.app.name }}
   namespace: {{.Release.Namespace}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: invoice-mgr-app
+      app: {{ .Values.app.name }}
   template:
     metadata:
       labels:
-        app: invoice-mgr-app
+        app: {{ .Values.app.name }}
         version: {{ .Values.app.version }}
     spec:
       serviceAccountName: invoice-mgr-app-sa
       containers:
-        - name: invoice-mgr-app
+        - name: {{ .Values.app.name }}
           image: {{ .Values.container.image }}
           command: [ "npm" ]
-          args: [ "run", "app" ]
+          args: [ "run", {{ .Values.app.exec }} ]
           ports:
             - containerPort: 3000
           imagePullPolicy: {{ .Values.imagePullPolicy }}
           env:
             - name: GENERATOR_URL
-              value: "http://invoice-mgr-gen-svc:3100"
+              value: {{ .Values.GENERATOR_URL }}
             - name: DATA_URL
-              value: "http://invoice-mgr-data-svc:3300"
+              value: {{ .Values.DATA_URL }}
             - name: PAYMENT_URL
-              value: "http://invoice-mgr-payment-svc:3200"
+              value: {{ .Values.PAYMENT_URL }}
             - name: SPACE
               value: {{ .Release.Namespace }}
           readinessProbe:
@@ -55,17 +45,3 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 10
             timeoutSeconds: 5
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: invoice-mgr-app-svc
-  namespace: {{.Release.Namespace}}
-spec:
-  selector:
-    app: invoice-mgr-app
-  ports:
-    - name: http-invoice-mgr-app
-      port: 3000
-      targetPort: 3000

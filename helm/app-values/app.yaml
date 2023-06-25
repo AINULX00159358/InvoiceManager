@@ -1,0 +1,7 @@
+app:
+  name: invoice-mgr-app
+  version: 1.0.0
+  exec: app
+  service:
+    name: invoice-mgr-app-svc
+    port: 3000
