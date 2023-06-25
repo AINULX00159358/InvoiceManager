@@ -7,7 +7,7 @@ spec:
   gateways:
     - {{ .Values.vs.gateway }}
   hosts:
-    - {{ .Values.app.service.name }}
+    - {{ .Values.vs.host }}
   http:
     - route:
         - destination:
