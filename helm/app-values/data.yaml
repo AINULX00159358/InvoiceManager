@@ -2,7 +2,6 @@ app:
   name: invoice-mgr-data
   exec: data
   service:
-    name: invoice-mgr-data-svc
     port: 3300
 vs:
   host: data

@@ -2,7 +2,6 @@ app:
   name: invoice-mgr-generator
   exec: generator
   service:
-    name: invoice-mgr-generator-svc
     port: 3100
 vs:
   host: generator

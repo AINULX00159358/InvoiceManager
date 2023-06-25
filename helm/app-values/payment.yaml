@@ -2,7 +2,6 @@ app:
   name: invoice-mgr-payment
   exec: payment
   service:
-    name: invoice-mgr-payment-svc
     port: 3200
 vs:
   host: payment

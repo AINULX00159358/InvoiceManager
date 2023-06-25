@@ -2,7 +2,6 @@ app:
   name: invoice-mgr-app
   exec: app
   service:
-    name: invoice-mgr-app-svc
     port: 3000
 vs:
   host: app
