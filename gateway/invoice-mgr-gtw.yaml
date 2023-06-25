@@ -24,8 +24,11 @@ spec:
   gateways:
     - invoice-mgr-gateway
   http:
-  - route:
-    - destination:
-        host: app
-        port:
-          number: 3000
+    - match:
+        - uri:
+            exact: /app
+      route:
+        - destination:
+            host: app
+            port:
+              number: 3000
