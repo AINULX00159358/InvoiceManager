@@ -19,7 +19,8 @@ spec:
   hosts:
     - {{ .Values.app.name }}
   http:
-    - route:
+    - name: {{ .Values.app.name }}
+      route:
         - destination:
             host: {{ .Values.app.name }}
             subset: subset-v1
