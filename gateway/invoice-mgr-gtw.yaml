@@ -13,3 +13,22 @@ spec:
         protocol: HTTP
       hosts:
         - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: invoicemgr
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - invoice-mgr-gateway
+  http:
+    - match:
+        - uri:
+            exact: /app
+      route:
+        - destination:
+            host: app
+            port:
+              number: 3000
