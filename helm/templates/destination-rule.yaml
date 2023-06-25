@@ -5,6 +5,33 @@ metadata:
 spec:
   host: {{ .Values.app.name }}
   subsets:
-    - name: v1
+    - name: subset-v1
       labels:
         version: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Values.app.name }}
+spec:
+  hosts:
+    - {{ .Values.app.name }}
+  http:
+    - route:
+        - destination:
+            host: {{ .Values.app.name }}
+            subset: subset-v1
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: {{ .Values.app.name }}
+spec:
+  parentRefs:
+    - kind: Service
+      name: {{ .Values.app.name }}
+      port: {{ .Values.app.service.port }}
+  rules:
+    - backendRefs:
+        - name: {{ .Values.app.name }}-v1
+          port: {{ .Values.app.service.port }}
