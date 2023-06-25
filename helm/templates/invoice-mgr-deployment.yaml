@@ -14,7 +14,7 @@ spec:
         app: {{ .Values.app.name }}
         version: {{ .Values.app.version }}
     spec:
-      serviceAccountName: invoice-mgr-app-sa
+      serviceAccountName: invoice-mgr-sa
       containers:
         - name: {{ .Values.app.name }}
           image: {{ .Values.container.image }}
