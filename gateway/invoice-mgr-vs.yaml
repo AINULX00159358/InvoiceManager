@@ -11,5 +11,6 @@ spec:
     - route:
         - destination:
             host: app
-            port:
-              number: 3000
+            subset: subset-v1
+#            port:
+#              number: 3000
