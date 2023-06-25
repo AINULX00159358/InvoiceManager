@@ -6,6 +6,7 @@ metadata:
 spec:
   selector:
     app: {{ .Values.app.name }}
+    version: {{ .Values.app.version }}
   ports:
     - name: {{ .Values.app.name }}
       port: {{ .Values.app.service.port }}

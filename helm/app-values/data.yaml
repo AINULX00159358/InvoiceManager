@@ -1,6 +1,5 @@
 app:
   name: invoice-mgr-data
-  version: 1.0.0
   exec: data
   service:
     name: invoice-mgr-data-svc
