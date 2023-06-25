@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.app.service.name }}-{{ .Values.app.version }}
+  name: {{ .Values.app.service.name }}-{{ .Values.vs.subset }}
   namespace: {{.Release.Namespace}}
 spec:
   selector:

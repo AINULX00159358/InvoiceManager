@@ -5,11 +5,11 @@ metadata:
   namespace: default
 spec:
   gateways:
-    - {{ .Values.gateway }}
+    - {{ .Values.vs.gateway }}
   hosts:
     - {{ .Values.app.service.name }}
   http:
     - route:
         - destination:
-            host: {{ .Values.app.service.name }}.{{.Release.Namespace}}.svc.cluster.local
-            subset: {{ .Values.app.version }}
+            host: {{ .Values.app.service.name }}-{{ .Values.vs.subset }}.{{.Release.Namespace}}.svc.cluster.local
+            subset: {{ .Values.vs.subset }}

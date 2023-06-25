@@ -7,4 +7,6 @@ imagePullPolicy: Always
 GENERATOR_URL: "http://generator:3100"
 DATA_URL: "data"
 PAYMENT_URL: "payment"
-gateway: "invoice-mgr-gateway"
+vs:
+  gateway: "invoice-mgr-gateway"
+  subset: v100
