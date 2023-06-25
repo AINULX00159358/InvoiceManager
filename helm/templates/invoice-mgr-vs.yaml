@@ -11,5 +11,5 @@ spec:
   http:
     - route:
         - destination:
-            host: {{ .Values.app.name }}-svc-{{ .Values.app.version }}
+            host: {{ .Values.app.name }}-svc-{{ .Values.vs.subset }}
             subset: {{ .Values.vs.subset }}
