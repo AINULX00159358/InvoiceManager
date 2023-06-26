@@ -2,7 +2,7 @@ app:
   version: v1
 container:
   image:
-    name: "x00159358/image-mgr"
+    name: "x00159358/invoice-mgr"
     version: "v1.0.0"
 imagePullPolicy: Always
 GENERATOR_URL: "http://generator:3100"
