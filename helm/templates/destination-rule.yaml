@@ -6,8 +6,8 @@ metadata:
 spec:
   hosts:
     - {{ .Values.app.name }}
-  gateways:
-    - invoice-mgr-gateway
+#  gateways:
+#    - invoice-mgr-gateway
   http:
     - name: {{ .Values.app.name }}
       route:
