@@ -17,5 +17,8 @@ helm upgrade -n $1 --install invoice-manager-data ./helm -f ./helm/app-values/da
 echo "create deploy generator"
 helm upgrade -n $1 --install invoice-manager-generator ./helm -f ./helm/app-values/generator.yaml
 
+echo "create deploy generator-v2"
+helm upgrade -n $1 --install invoice-manager-generator-v2 ./helm -f ./helm/app-values/generator-v2.yaml
+
 echo "create deploy payment"
 helm upgrade -n $1 --install invoice-manager-payment ./helm -f ./helm/app-values/payment.yaml
