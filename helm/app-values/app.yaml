@@ -5,4 +5,3 @@ app:
     port: 3000
 vs:
   host: app
-routing: false

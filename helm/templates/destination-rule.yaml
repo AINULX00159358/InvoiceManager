@@ -1,5 +1,4 @@
 apiVersion: networking.istio.io/v1alpha3
-  {{ if .Values.routing }}
 kind: VirtualService
 metadata:
   name: {{ .Values.app.name }}
@@ -27,4 +26,3 @@ spec:
     - name: subset-v1
       labels:
         version: v1
-  {{ end }}

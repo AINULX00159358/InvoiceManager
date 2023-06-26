@@ -10,4 +10,3 @@ PAYMENT_URL: "http://payment:3200"
 vs:
   gateway: "invoice-mgr-gateway"
   subset: v100
-routing: true
