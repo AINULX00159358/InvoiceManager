@@ -10,7 +10,7 @@ echo "using namespace $1"
 helm del -n $1 $(helm ls --all -n $1 --short)
 
 echo "create deploy app"
-helm upgrade -n $1 --install invoice-manager-app ./helm -f ./helm/app-values/app.yaml --set destination-rule=false
+helm upgrade -n $1 --install invoice-manager-app ./helm -f ./helm/app-values/app.yaml
 
 echo "create deploy data"
 helm upgrade -n $1 --install invoice-manager-data ./helm -f ./helm/app-values/data.yaml
