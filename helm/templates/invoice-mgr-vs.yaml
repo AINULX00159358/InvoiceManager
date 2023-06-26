@@ -12,5 +12,5 @@ spec:
     - route:
         - destination:
             host: {{ .Values.app.name }}
-            subset: subset-v1
+            subset: subset-{{ .Values.app.version }}
   {{ end }}

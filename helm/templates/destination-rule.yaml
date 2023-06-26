@@ -11,7 +11,7 @@ spec:
       route:
         - destination:
             host: {{ .Values.app.name }}
-            subset: subset-v1
+            subset: subset-{{ .Values.app.version }}
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
@@ -21,6 +21,6 @@ metadata:
 spec:
   host: {{ .Values.app.name }}
   subsets:
-    - name: subset-v1
+    - name: subset-{{ .Values.app.version }}
       labels:
-        version: v1
+        version: {{ .Values.app.version }}

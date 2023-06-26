@@ -1,10 +1,10 @@
 app:
-  version: 1.0.0
+  version: v1
 container:
-  image: "x00159358/image-mgr:v1.0.0"
+  image:
+    name: "x00159358/image-mgr"
+    version: "v1.0.0"
 imagePullPolicy: Always
 GENERATOR_URL: "http://generator:3100"
 DATA_URL: "http://data:3300"
 PAYMENT_URL: "http://payment:3200"
-vs:
-  subset: subset-v1
