@@ -5,3 +5,6 @@ app:
     port: 3100
 vs:
   host: generator
+container:
+  image:
+    version: "v1.1.0"

@@ -9,7 +9,7 @@ const version = server.version;
 server.app.post('/generate', (req, res) => {
     res.set("version", version);
     console.log(req.body);
-    const invoice = model.generateInvoice(req.body.clientId, req.body.amount)
+    const invoice = model.generateInvoice(req.body.clientId, req.body.amount, "v2 "+version)
     addInvoice(invoice);
     res.send(invoice);
 });
