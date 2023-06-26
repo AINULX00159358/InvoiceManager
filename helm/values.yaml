@@ -1,5 +1,7 @@
 app:
   version: v1
+  service:
+    enabled: true
 container:
   image:
     name: "x00159358/invoice-mgr"
