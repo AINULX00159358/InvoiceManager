@@ -1,6 +1,6 @@
 apiVersion: networking.istio.io/v1alpha3
-  {{ if .Values.vs.gateway }}
 kind: VirtualService
+  {{ if .Values.vs.gateway }}
 metadata:
   name: ingress-mgr-vs
 spec:
