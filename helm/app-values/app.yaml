@@ -1,3 +1,4 @@
+destination-rule: false
 app:
   name: app
   exec: app
