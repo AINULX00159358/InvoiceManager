@@ -1,4 +1,3 @@
-#containerRegistry: "ainhabacr.azurecr.io"
 app:
   version: 1.0.0
 container:
@@ -8,5 +7,4 @@ GENERATOR_URL: "http://generator:3100"
 DATA_URL: "http://data:3300"
 PAYMENT_URL: "http://payment:3200"
 vs:
-  gateway: "invoice-mgr-gateway"
-  subset: v100
+  subset: subset-v1

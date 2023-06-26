@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+  {{ if .Values.vs.gateway }}
+kind: VirtualService
+metadata:
+  name: ingress-mgr-vs
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - {{ .Values.vs.gateway }}
+  http:
+    - route:
+        - destination:
+            host: {{ .Values.app.name }}
+            subset: subset-v1
+  {{ end }}

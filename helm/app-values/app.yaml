@@ -4,4 +4,4 @@ app:
   service:
     port: 3000
 vs:
-  host: app
+  gateway: "invoice-mgr-gateway"
