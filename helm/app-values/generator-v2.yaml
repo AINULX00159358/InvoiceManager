@@ -3,7 +3,7 @@ app:
   version: v2
   exec: generator
   service:
-    port:
+    enabled: false
 vs:
   host: generator
 container:
