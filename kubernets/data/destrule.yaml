@@ -17,8 +17,6 @@ metadata:
 spec:
   hosts:
     - data
-  gateways:
-    - invoice-mgr-internal-gateway
   http:
     - route:
         - destination:

@@ -20,8 +20,6 @@ metadata:
 spec:
   hosts:
     - generator
-  gateways:
-    - invoice-mgr-internal-gateway
   http:
     - name: generator
       route:
