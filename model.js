@@ -4,7 +4,7 @@ const uuid = require('uuid');
 function generateInvoice(clientId, amount, version) {
     return {
          invoiceId: uuid.v4(),
-         clientId: clientId + " [version="+version+"]"
+         clientId: clientId + " [version="+version+"]",
          amount: Number(amount),
          date: new Date().toISOString(),
          paid: "n",

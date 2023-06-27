@@ -10,7 +10,7 @@ spec:
     - name: {{ .Values.app.name }}
       route:
         - destination:
-            host: {{ .Values.app.name }}
+            host: {{ .Values.app.name }}-{{ .Values.app.version }}
             subset: subset-{{ .Values.app.version }}
 ---
 apiVersion: networking.istio.io/v1alpha3
@@ -19,7 +19,7 @@ metadata:
   name: {{ .Values.app.name }}-{{ .Values.app.version }}
   namespace: {{.Release.Namespace}}
 spec:
-  host: {{ .Values.app.name }}
+  host: {{ .Values.app.name }}-{{ .Values.app.version }}
   subsets:
     - name: subset-{{ .Values.app.version }}
       labels:
