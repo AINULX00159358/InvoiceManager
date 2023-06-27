@@ -9,6 +9,9 @@ spec:
     - name: app-subset-v1
       labels:
         version: v1
+    - name: app-subset-v2
+      labels:
+        version: v2
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -24,3 +27,6 @@ spec:
         - destination:
             host: app
             subset: app-subset-v1
+        - destination:
+            host: app
+            subset: app-subset-v2
