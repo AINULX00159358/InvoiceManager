@@ -4,7 +4,7 @@ metadata:
   name: app-dest-rule
   namespace: default
 spec:
-  host: app-v1
+  host: app
   subsets:
     - name: app-subset-v1
       labels:
@@ -22,5 +22,5 @@ spec:
   http:
     - route:
         - destination:
-            host: app-v1
+            host: app
             subset: app-subset-v1
