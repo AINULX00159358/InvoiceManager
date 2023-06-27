@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: generator-dest-rule
+  namespace: default
+spec:
+  host: generator
+  subsets:
+    - name: generator-subset-v1
+      labels:
+        version: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: generator-vs
+spec:
+  hosts:
+    - generator
+  http:
+    - route:
+        - destination:
+            host: generator
+            subset: generator-subset-v1
