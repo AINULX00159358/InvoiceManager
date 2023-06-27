@@ -9,9 +9,6 @@ spec:
     - name: generator-subset-v1
       labels:
         version: v1
-    - name: generator-subset-v2
-      labels:
-        version: v2
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
