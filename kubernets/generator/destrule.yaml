@@ -26,8 +26,3 @@ spec:
         - destination:
             host: generator
             subset: generator-subset-v1
-          weight: 20
-        - destination:
-            host: generator
-            subset: generator-subset-v2
-          weight: 80
