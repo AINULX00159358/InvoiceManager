@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: app-dest-rule
-  namespace: default
+  namespace: ui
 spec:
   host: app
   subsets:
@@ -12,23 +12,3 @@ spec:
     - name: app-subset-v2
       labels:
         version: v2
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: app-vs
-spec:
-  hosts:
-    - "*"
-  gateways:
-    - invoice-mgr-gateway
-  http:
-    - route:
-        - destination:
-            host: app
-            subset: app-subset-v1
-          weight: 50
-        - destination:
-            host: app
-            subset: app-subset-v2
-          weight: 50
