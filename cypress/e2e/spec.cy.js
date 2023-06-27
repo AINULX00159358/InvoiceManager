@@ -6,19 +6,25 @@ let load = Cypress.env('TIMES');
 if (load == null) {
     load = 10;
 }
+let versions110 = false;
 Cypress._.times(5, () => {
   describe('E2E UI Test HEALTH', () => {
-
-
     it('get health', () => {
       cy.request("GET", "http://" + URL + "/health").then((response) => {
         expect(response.status).to.eq(200)
-        expect(response.body).to.contain('Healthy')
+        expect(response.body['status']).to.contain('healthy')
+        versions110 = (response.body['version'] === '1.1.0') || versions110
       })
     });
-
   })
 });
+
+describe('E2E check version', () => {
+    it('versions', () => {
+        expect(versions110).to.eq(true)
+    });
+ });
+
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
