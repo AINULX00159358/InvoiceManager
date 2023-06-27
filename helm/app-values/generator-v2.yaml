@@ -2,6 +2,8 @@ app:
   name: generator
   version: v2
   exec: generator
+  service:
+    port: 3100
 vs:
   host: generator
 container:
