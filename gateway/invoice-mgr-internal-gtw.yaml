@@ -12,6 +12,4 @@ spec:
         name: http
         protocol: HTTP
       hosts:
-        - "generator"
-        - "data"
-        - "payment"
+        - "*.default.svc.cluster.local"
