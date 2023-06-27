@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: data-v1
+  name: payment-v1
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: data
+      app: payment
       version: v1
   template:
     metadata:
       labels:
-        app: data
+        app: payment
         version: v1
     spec:
       serviceAccountName: invoice-mgr-sa
       containers:
-        - name: data
+        - name: payment
           image: x00159358/invoice-mgr:v1.0.0
           command: [ "npm" ]
-          args: [ "run", "data" ]
+          args: [ "run", "payment" ]
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
