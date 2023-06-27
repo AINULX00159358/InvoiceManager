@@ -11,7 +11,9 @@ kubectl get svc
 echo "--------------"
 kubectl get destinationrule
 echo "--------------"
+sleep 10
 istioctl analyze
 echo "----------------------"
+sleep 3
 curl -m 1 "http://${GATEWAY_URL}/"
 echo "    "
