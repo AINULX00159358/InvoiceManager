@@ -8,6 +8,7 @@ metadata:
 spec:
   selector:
     app: generator
+    version: v1
   ports:
     - name: http
       port: 3100
