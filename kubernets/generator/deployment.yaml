@@ -46,3 +46,52 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 10
             timeoutSeconds: 5
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: generator-v2
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: generator
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: generator
+        version: v2
+    spec:
+      serviceAccountName: invoice-mgr-sa
+      containers:
+        - name: generator
+          image: x00159358/invoice-mgr:v1.1.0
+          command: [ "npm" ]
+          args: [ "run", "generator" ]
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always
+          env:
+            - name: GENERATOR_URL
+              value: http://generator:3100
+            - name: DATA_URL
+              value: http://data:3300
+            - name: PAYMENT_URL
+              value: http://payment:3200
+            - name: SPACE
+              value: default
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            successThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            successThreshold: 1
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5

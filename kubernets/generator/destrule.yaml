@@ -9,6 +9,9 @@ spec:
     - name: generator-subset-v1
       labels:
         version: v1
+    - name: generator-subset-v2
+      labels:
+        version: v2
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -17,9 +20,14 @@ metadata:
 spec:
   hosts:
     - generator
+  gateways:
+    - invoice-mgr-internal-gateway
   http:
     - name: generator
       route:
         - destination:
             host: generator
             subset: generator-subset-v1
+        - destination:
+            host: generator
+            subset: generator-subset-v2
