@@ -2,8 +2,6 @@ app:
   name: generator
   version: v2
   exec: generator
-  service:
-    enabled: false
 vs:
   host: generator
 container:
