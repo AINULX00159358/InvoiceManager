@@ -10,16 +10,16 @@ spec:
     - name: {{ .Values.app.name }}
       route:
         - destination:
-            host: {{ .Values.app.name }}-{{ .Values.app.version }}
+            host: {{ .Values.app.name }}
             subset: subset-{{ .Values.app.version }}
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: {{ .Values.app.name }}-{{ .Values.app.version }}
+  name: {{ .Values.app.name }}
   namespace: {{.Release.Namespace}}
 spec:
-  host: {{ .Values.app.name }}-{{ .Values.app.version }}
+  host: {{ .Values.app.name }}
   subsets:
     - name: subset-{{ .Values.app.version }}
       labels:
