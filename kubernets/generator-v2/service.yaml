@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: generator-v2
+  namespace: default
+  labels:
+    app: generator
+    version: v2
+spec:
+  selector:
+    app: generator
+    version: v2
+  ports:
+    - name: http
+      port: 3100
+      targetPort: 3000
