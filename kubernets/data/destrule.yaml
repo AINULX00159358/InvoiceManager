@@ -4,7 +4,7 @@ metadata:
   name: data-dest-rule
   namespace: default
 spec:
-  host: data-v1
+  host: data
   subsets:
     - name: data-subset-v1
       labels:
@@ -20,5 +20,5 @@ spec:
   http:
     - route:
         - destination:
-            host: data-v1
+            host: data
             subset: data-subset-v1
