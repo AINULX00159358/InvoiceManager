@@ -62,7 +62,7 @@ spec:
     metadata:
       labels:
         app: generator
-        version: v1
+        version: v2
     spec:
       serviceAccountName: invoice-mgr-sa
       containers:
