@@ -1,7 +1,0 @@
-app:
-  name: data
-  exec: data
-  service:
-    port: 3300
-vs:
-  host: data

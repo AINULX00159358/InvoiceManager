@@ -1,7 +1,0 @@
-app:
-  name: payment
-  exec: payment
-  service:
-    port: 3200
-vs:
-  host: payment

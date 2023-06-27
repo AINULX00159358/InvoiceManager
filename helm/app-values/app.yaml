@@ -1,7 +1,0 @@
-app:
-  name: app
-  exec: app
-  service:
-    port: 3000
-vs:
-  gateway: "invoice-mgr-gateway"

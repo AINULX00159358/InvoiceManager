@@ -1,7 +1,0 @@
-app:
-  name: generator
-  exec: generator
-  service:
-    port: 3100
-vs:
-  host: generator

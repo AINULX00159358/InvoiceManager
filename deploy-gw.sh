@@ -1,3 +1,3 @@
 #!/bin/bash
-kubectl apply -f gateway/invoice-mgr-gtw.yaml
+kubectl apply -f kubernetes/invoice-mgr-gtw.yaml
 kubectl get gateway -o=yaml
