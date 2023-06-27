@@ -26,10 +26,10 @@ spec:
         - destination:
             host: generator
             subset: generator-subset-v1
-      weight: 30
+          weight: 30
     - name: generator-v2
       route:
         - destination:
             host: generator
             subset: generator-subset-v2
-      weight: 70
+          weight: 70
