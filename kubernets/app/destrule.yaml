@@ -27,6 +27,8 @@ spec:
         - destination:
             host: app
             subset: app-subset-v1
+          weight: 30
         - destination:
             host: app
             subset: app-subset-v2
+          weight: 70
