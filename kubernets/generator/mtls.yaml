@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: "generator"
+  namespace: "default"
+spec:
+  selector:
+    matchLabels:
+      app: generator
+  mtls:
+    mode: STRICT
