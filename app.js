@@ -31,6 +31,9 @@ server.app.post('/new', (req, res) => {
              url:     config.GENERATOR_URL+'/generate',
              body:    JSON.stringify(req.body)
            }, function(error, response, body){
+             if (error) {
+                 console.log("error ", error)
+             }
               res.set('version', version);
              res.send(JSON.parse(body));
            });
