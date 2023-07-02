@@ -26,11 +26,11 @@ spec:
           imagePullPolicy: Always
           env:
             - name: GENERATOR_URL
-              value: http://generator:3100
+              value: https://generator:3100
             - name: DATA_URL
-              value: http://data:3300
+              value: https://data:3300
             - name: PAYMENT_URL
-              value: http://payment:3200
+              value: https://payment:3200
             - name: SPACE
               value: default
           readinessProbe:
