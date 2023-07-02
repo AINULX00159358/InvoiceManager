@@ -26,11 +26,11 @@ spec:
           imagePullPolicy: Always
           env:
             - name: GENERATOR_URL
-              value: https://generator.default.svc.cluster.local:3100
+              value: http://generator.default.svc.cluster.local:3100
             - name: DATA_URL
-              value: https://data.default.svc.cluster.local:3300
+              value: http://data.default.svc.cluster.local:3300
             - name: PAYMENT_URL
-              value: https://payment.default.svc.cluster.local:3200
+              value: http://payment.default.svc.cluster.local:3200
             - name: SPACE
               value: ui
           readinessProbe:
