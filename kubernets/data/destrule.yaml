@@ -5,6 +5,9 @@ metadata:
   namespace: default
 spec:
   host: data
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
   subsets:
     - name: data-subset-v1
       labels:

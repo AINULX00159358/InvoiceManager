@@ -5,6 +5,9 @@ metadata:
   namespace: default
 spec:
   host: generator
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
   subsets:
     - name: generator-subset-v1
       labels:

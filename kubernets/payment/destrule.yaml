@@ -5,6 +5,9 @@ metadata:
   namespace: default
 spec:
   host: payment
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
   subsets:
     - name: payment-subset-v1
       labels:
