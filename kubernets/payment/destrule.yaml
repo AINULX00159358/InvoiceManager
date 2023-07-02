@@ -20,11 +20,9 @@ metadata:
 spec:
   hosts:
     - payment
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
   http:
-    - route:
+    - name: payment
+      route:
         - destination:
             host: payment
             subset: payment-subset-v1
