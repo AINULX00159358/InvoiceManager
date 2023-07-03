@@ -58,7 +58,8 @@ server.app.get('/health', (req, res) => {
 });
 
 server.app.post('/saveInvoice', (req, res) => {
- console.log('receiving data ...');
+    console.log('------------ Save Invoice --------------');
+    console.log(JSON.stringify(req.headers));
     console.log('body is ',req.body.invoiceId);
    res.set("version", version);
    if (saveToCache(req.body)) {
@@ -80,6 +81,8 @@ server.app.get('/getUnPaid', (req, res) => {
 
 
 server.app.post('/updatePayment', (req, res) => {
+     console.log("----- Update Payment --------");
+     console.log(JSON.stringify(req.headers));
      console.log('received payment for ',req.body);
     res.set("version", version);
      if (updatePayment(req.body, req.body.invoiceId)) {

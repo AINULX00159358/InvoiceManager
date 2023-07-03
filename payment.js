@@ -4,6 +4,8 @@ const server = require("./server");
 const config = require('./config');
 
 server.app.post('/payment', (req, res) => {
+   console.log('------------ payment --------------');
+   console.log(JSON.stringify(req.headers));
    console.log("Receive Payments")
    const payment = model.generatePayment(req.body.invoiceId, req.body.amount)
     console.log(" Payments = ", payment)
