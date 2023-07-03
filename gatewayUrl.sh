@@ -5,16 +5,17 @@ echo "INGRESS_PORT set to ${INGRESS_PORT}"
 export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 echo "GATEWAY_URL set to ${GATEWAY_URL}"
 echo "    "
-kubectl get vs
+kubectl get vs --all-namespaces
 echo "--------------"
+kubectl get svc -n ui
 kubectl get svc
 echo "--------------"
-kubectl get destinationrule
+kubectl get destinationrule --all-namespaces
 echo "--------------"
 sleep 4
 istioctl analyze
 echo "----------------------"
 sleep 2
-curl -m 1 "http://${GATEWAY_URL}/"
+curl "http://${GATEWAY_URL}/"
 echo "    "
 
