@@ -26,6 +26,8 @@ server.app.get('/create', (req, res) => {
 
 
 server.app.post('/new', (req, res) => {
+       console.log('------------ new Invoice --------------');
+       console.log(JSON.stringify(req.headers));
     request.post({
              headers: {'content-type' : 'application/json'},
              url:     config.GENERATOR_URL+'/generate',
@@ -45,6 +47,8 @@ server.app.get('/payment', (req, res) => {
 });
 
 server.app.post('/doPayment', (req, res) => {
+    console.log('------------ do Payment --------------');
+    console.log(JSON.stringify(req.headers));
     console.log("in /doPayment , body is ", req.body)
     const paymentJson = {
         invoiceId: req.body.invoiceId, amount: req.body.amount
