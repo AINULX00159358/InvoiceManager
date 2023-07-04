@@ -1,0 +1,13 @@
+This is an Introduction to Service Mesh ,  specifically for Kubernetes Network.
+We will cover concepts of Service Mesh, look at Opensource implementation of Istio + Envoy.
+
+Let’s consider a Monolith, with single codebase, which contains all features of application in single application unit , running as standalone application
+We break it to several group of Microservices deployed as a cluster, with each services can be a single business feature, communicating with each other to perform a business process.   
+Migration to Microservices provides huge advantage over monolith by Increasing Resilience ( Reducing single point of failure), Increase Scalability ( we can scale individual services as needed) , Increase flexibility ( making a polyglot service and persistence) , Increase in Delivery Rate (small change can encourage frequent releases) , Increases Business agility and  provide better data security.
+
+But Microservice migration comes with many challenges, Some of them common cross-cutting concerns are: Service Discovery, Load balancing, Fault Tolerance, Distributed Tracing , telemetries , Security enforcement.  Other challenges includes Granularity, Bounded Context, Independent Releasable, Service contract and Smart Service with dumb pipes.  
+We will address most of common cross-cutting concerns using Service Mesh technology and leave other microservices concerts for another day
+
+Introducing Service Mesh. Motivation for Service Mesh is “DO NOT BURDEN MY CODE WITH INFRASTRUCTURE RELATED CODE, DEPENDENCY and DESCISION”. Service mesh introduce the concept of placing a “sidecar” in a microservice application or container which will “OFFLOAD ALL COMMUNICATION HEAVY LIFTING from Application code to SIDECAR.  It also proposes to keep a control plane hosting a Control Town.  The Control Tower manager the sidecar,  injecting the Security Cert for TLS communication, Traffic Policy (example Throttling, Rate limit etc.)  and Routing rules.
+Thus, the Definition of Service Mesh : A Service Mesh is a dedicated infrastructure layer that controls Service-to Service communication over Network. This method enabled a separate part of application to communicate with other services.
+
