@@ -6,5 +6,3 @@ kubectl create secret generic cacerts -n istio-system \
       --from-file=certs/root-cert.pem \
       --from-file=certs/cert-chain.pem
 kubectl get secret cacerts -n istio-system -o=yaml
-istioctl install -y
-istoctl verify-install
